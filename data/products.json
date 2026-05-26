@@ -1,0 +1,194 @@
+[
+  {
+    "id": "audifonos-pulse-air",
+    "slug": "audifonos-pulse-air",
+    "name": "Audífonos Pulse Air",
+    "price": 189000,
+    "compareAtPrice": 229000,
+    "category": "Tecnología",
+    "shortDescription": "Sonido claro, batería larga y diseño minimalista.",
+    "description": "Audífonos inalámbricos con baja latencia, estuche compacto y comodidad para todo el día.",
+    "images": ["/images/product-1.svg"],
+    "variants": [
+      {
+        "label": "Color",
+        "options": ["Negro", "Blanco", "Verde"]
+      }
+    ],
+    "featured": true,
+    "offer": true,
+    "badge": "Bestseller",
+    "rating": 4.8,
+    "reviews": 128,
+    "highlights": ["Bluetooth estable", "Carga rápida", "Micrófono nítido"]
+  },
+  {
+    "id": "smartwatch-urban-pro",
+    "slug": "smartwatch-urban-pro",
+    "name": "Smartwatch Urban Pro",
+    "price": 349000,
+    "compareAtPrice": 399000,
+    "category": "Tecnología",
+    "shortDescription": "Control total desde tu muñeca, con look premium.",
+    "description": "Reloj inteligente con monitoreo de actividad, llamadas y batería extendida.",
+    "images": ["/images/product-2.svg"],
+    "variants": [
+      {
+        "label": "Tamaño",
+        "options": ["41 mm", "45 mm"]
+      },
+      {
+        "label": "Color",
+        "options": ["Grafito", "Dorado"]
+      }
+    ],
+    "featured": true,
+    "offer": false,
+    "badge": "Nuevo",
+    "rating": 4.7,
+    "reviews": 94,
+    "highlights": ["Pantalla brillante", "Resistente al agua", "Compatible iOS/Android"]
+  },
+  {
+    "id": "lampara-led-halo",
+    "slug": "lampara-led-halo",
+    "name": "Lámpara LED Halo",
+    "price": 99000,
+    "compareAtPrice": 129000,
+    "category": "Hogar",
+    "shortDescription": "Iluminación suave para escritorio, living o estudio.",
+    "description": "Lámpara LED de consumo eficiente con brillo regulable y diseño limpio.",
+    "images": ["/images/product-3.svg"],
+    "variants": [
+      {
+        "label": "Color",
+        "options": ["Blanco", "Negro"]
+      }
+    ],
+    "featured": false,
+    "offer": false,
+    "badge": "Top venta",
+    "rating": 4.6,
+    "reviews": 76,
+    "highlights": ["Bajo consumo", "Luz cálida/fría", "Base antideslizante"]
+  },
+  {
+    "id": "kit-skincare-glow",
+    "slug": "kit-skincare-glow",
+    "name": "Kit Skincare Glow",
+    "price": 219000,
+    "compareAtPrice": 279000,
+    "category": "Belleza",
+    "shortDescription": "Rutina simple para una piel más fresca y luminosa.",
+    "description": "Set completo con limpieza, hidratación y cuidado diario en presentación premium.",
+    "images": ["/images/product-4.svg"],
+    "variants": [
+      {
+        "label": "Tipo de piel",
+        "options": ["Mixta", "Grasa", "Sensible"]
+      }
+    ],
+    "featured": true,
+    "offer": false,
+    "badge": "Recomendado",
+    "rating": 4.9,
+    "reviews": 153,
+    "highlights": ["Rutina diaria", "Fórmula suave", "Presentación premium"]
+  },
+  {
+    "id": "mochila-city-pack",
+    "slug": "mochila-city-pack",
+    "name": "Mochila City Pack",
+    "price": 159000,
+    "compareAtPrice": 199000,
+    "category": "Accesorios",
+    "shortDescription": "Liviana, resistente y pensada para uso diario.",
+    "description": "Mochila urbana con compartimentos internos y diseño elegante para trabajo o estudio.",
+    "images": ["/images/product-5.svg"],
+    "variants": [
+      {
+        "label": "Color",
+        "options": ["Azul", "Negro", "Arena"]
+      }
+    ],
+    "featured": true,
+    "offer": false,
+    "badge": "Favorito",
+    "rating": 4.8,
+    "reviews": 88,
+    "highlights": ["Compartimento notebook", "Tela reforzada", "Estilo urbano"]
+  },
+  {
+    "id": "botella-termica-flow",
+    "slug": "botella-termica-flow",
+    "name": "Botella Térmica Flow",
+    "price": 129000,
+    "compareAtPrice": 159000,
+    "category": "Fitness",
+    "shortDescription": "Mantiene la temperatura y acompaña la rutina.",
+    "description": "Botella térmica con tapa segura, agarre cómodo y acabado mate premium.",
+    "images": ["/images/product-3.svg"],
+    "variants": [
+      {
+        "label": "Capacidad",
+        "options": ["500 ml", "750 ml"]
+      }
+    ],
+    "featured": false,
+    "offer": false,
+    "badge": "Esencial",
+    "rating": 4.7,
+    "reviews": 61,
+    "highlights": ["Acero inoxidable", "Tapa anti-derrame", "Fácil de limpiar"]
+  },
+  {
+    "id": "difusor-aroma-zen",
+    "slug": "difusor-aroma-zen",
+    "name": "Difusor Aroma Zen",
+    "price": 149000,
+    "compareAtPrice": 179000,
+    "category": "Hogar",
+    "shortDescription": "Ambiente relajado con un toque moderno y limpio.",
+    "description": "Difusor ultrasónico con iluminación suave y funcionamiento silencioso para el hogar.",
+    "images": ["/images/product-4.svg"],
+    "variants": [
+      {
+        "label": "Color",
+        "options": ["Blanco", "Madera clara"]
+      }
+    ],
+    "featured": false,
+    "offer": true,
+    "badge": "Oferta",
+    "rating": 4.6,
+    "reviews": 52,
+    "highlights": ["Silencioso", "Luz ambiental", "Depósito amplio"]
+  },
+  {
+    "id": "set-deportivo-flex",
+    "slug": "set-deportivo-flex",
+    "name": "Set Deportivo Flex",
+    "price": 239000,
+    "compareAtPrice": 299000,
+    "category": "Fitness",
+    "shortDescription": "Comodidad total para entrenar o moverte con estilo.",
+    "description": "Conjunto deportivo con ajuste cómodo, tejido flexible y look moderno para el día a día.",
+    "images": ["/images/product-5.svg"],
+    "variants": [
+      {
+        "label": "Talla",
+        "options": ["S", "M", "L", "XL"]
+      },
+      {
+        "label": "Color",
+        "options": ["Negro", "Verde", "Gris"]
+      }
+    ],
+    "featured": true,
+    "offer": false,
+    "badge": "Premium",
+    "rating": 4.9,
+    "reviews": 112,
+    "highlights": ["Tela flexible", "Secado rápido", "Corte moderno"]
+  }
+]

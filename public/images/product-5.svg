@@ -1,0 +1,9 @@
+<svg width="960" height="720" viewBox="0 0 960 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="720" rx="48" fill="#F8FAFC"/>
+  <rect x="188" y="114" width="584" height="492" rx="88" fill="#111111"/>
+  <rect x="266" y="180" width="428" height="316" rx="64" fill="#22C55E" fill-opacity="0.18"/>
+  <path d="M330 272H630L596 452H364L330 272Z" fill="#FFFFFF" fill-opacity="0.9"/>
+  <rect x="392" y="204" width="176" height="38" rx="19" fill="#22C55E"/>
+  <text x="114" y="632" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="700">City Pack</text>
+  <text x="114" y="678" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">Urban backpack</text>
+</svg>

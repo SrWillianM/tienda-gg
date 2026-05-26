@@ -1,0 +1,19 @@
+{
+  "storeName": "Tienda WhatsApp Pro",
+  "tagline": "Plantilla premium de e-commerce para vender más por WhatsApp",
+  "description": "Una tienda online moderna, rápida y fácil de editar para emprendedores de Paraguay y Latam.",
+  "whatsappNumber": "595981234567",
+  "supportPhone": "+595 981 234 567",
+  "logo": "/images/logo.svg",
+  "currency": "PYG",
+  "accent": "#22C55E",
+  "accentHover": "#16A34A",
+  "background": "#FFFFFF",
+  "secondaryBackground": "#F8FAFC",
+  "text": "#0F172A",
+  "mutedText": "#64748B",
+  "deepHeader": "#111111",
+  "border": "#E2E8F0",
+  "ctaText": "Pedir por WhatsApp",
+  "shippingNote": "Entrega rápida en Asunción y envíos a todo el país"
+}

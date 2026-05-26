@@ -1,0 +1,20 @@
+import { Badge } from "@/components/ui/Badge";
+import { Navbar } from "@/components/layout/Navbar";
+import { shopConfig } from "@/lib/shop";
+
+export function Header() {
+  return (
+    <header className="sticky top-0 z-30">
+      <div className="border-b border-border bg-header text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 text-xs sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <Badge className="border-white/20 bg-white/10 text-white">2026 store template</Badge>
+            <span className="hidden text-white/80 sm:inline">{shopConfig.shippingNote}</span>
+          </div>
+          <span className="text-white/80">Atención por WhatsApp: {shopConfig.supportPhone}</span>
+        </div>
+      </div>
+      <Navbar />
+    </header>
+  );
+}
