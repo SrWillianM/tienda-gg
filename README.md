@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tienda WhatsApp Pro
 
-## Getting Started
+Plantilla premium de e-commerce en Next.js, TypeScript y Tailwind CSS 3.4, pensada para vender por WhatsApp con una experiencia moderna, rápida y 100% responsive.
 
-First, run the development server:
+## Qué incluye
+
+- Home premium con hero, categorías, productos destacados y oferta especial.
+- Catálogo con búsqueda, filtros por categoría y control por precio.
+- Carrito lateral y página de carrito dedicada.
+- Checkout sin pasarela: genera un mensaje de WhatsApp con el pedido completo.
+- Login seguro por roles con sesión HttpOnly.
+- Panel de personalización en `/admin` para editar tienda, productos, categorías, logo, número de WhatsApp y plantilla del mensaje.
+- Persistencia local con SQLite vía Prisma, con exportación e importación de backup JSON.
+- API de health y productos en `/api/health` y `/api/products`.
+
+## Roles
+
+- `user`: solo puede ver la tienda y comprar.
+- `ceo`: puede gestionar productos, categorías, variantes y ofertas.
+- `admin`: puede modificar toda la tienda, incluyendo configuración global.
+
+## Credenciales demo
+
+- `user@demo.com` / `User123!`
+- `ceo@demo.com` / `Ceo123!`
+- `admin@demo.com` / `Admin123!`
+
+## Personalización rápida
+
+1. Abre `/login` e inicia sesión con el rol que quieras usar.
+2. Abre `/admin`.
+3. Cambia nombre de la tienda, logo, número de WhatsApp y mensaje base si eres admin.
+4. Edita productos, ofertas, badges, categorías y variantes.
+5. Exporta el backup JSON si quieres mover la configuración a otro navegador o guardar una copia.
+
+## Variables del mensaje de WhatsApp
+
+En la plantilla del mensaje puedes usar:
+
+- `{name}`
+- `{phone}`
+- `{address}`
+- `{items}`
+- `{total}`
+- `{storeName}`
+
+## Desarrollo local
 
 ```bash
+npm install
+npx prisma generate
+npx prisma db push
+npm run db:seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Luego abre http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+La base local usa `file:./prisma/dev.db`. Cuando publiques, puedes cambiar `DATABASE_URL` y el `provider` de Prisma a una BD de nube.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Producción
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Despliegue en Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Sube el proyecto a GitHub.
+2. Importa el repo en Vercel.
+3. Deja el preset de Next.js por defecto.
+4. Usa `npm run build` como build command.
+5. Publica.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estructura editable
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `data/config.json` contiene nombre, logo, WhatsApp, colores, usuarios demo y plantilla del mensaje.
+- `data/products.json` contiene el catálogo base.
+- `/admin` permite editar la tienda desde una vista visual.

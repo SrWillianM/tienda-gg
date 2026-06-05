@@ -1,5 +1,17 @@
+// NOTE: These JSON imports are ONLY used as fallback seed data.
+// Real data always comes from Prisma via shop-data.server.ts + API.
+// Never import products/config directly in pages/components.
 import configData from "@/data/config.json";
 import rawProducts from "@/data/products.json";
+
+export type AuthRole = "user" | "ceo" | "admin";
+
+export interface AuthUser {
+  username: string;
+  password: string;
+  role: AuthRole;
+  displayName: string;
+}
 
 export interface ProductVariant {
   label: string;
@@ -48,6 +60,9 @@ export interface ShopConfig {
   whatsappNumber: string;
   supportPhone: string;
   logo: string;
+  whatsappMessageTemplate: string;
+  categories: string[];
+  authUsers: AuthUser[];
   currency: string;
   accent: string;
   accentHover: string;
@@ -63,10 +78,14 @@ export interface ShopConfig {
 
 export const shopConfig = configData as ShopConfig;
 export const products = rawProducts as Product[];
+export const defaultShopConfig = shopConfig;
+export const defaultProducts = products;
 
 export const featuredProducts = products.filter((product) => product.featured).slice(0, 4);
 export const offerProducts = products.filter((product) => product.offer);
-export const storeCategories = Array.from(new Set(products.map((product) => product.category)));
+export const storeCategories = shopConfig.categories.length
+  ? shopConfig.categories
+  : Array.from(new Set(products.map((product) => product.category)));
 
 export const formatPrice = (value: number) =>
   new Intl.NumberFormat("es-PY", {
@@ -90,33 +109,43 @@ export const buildLineId = (productId: string, selection: CartSelection) =>
 export const buildWhatsAppMessage = (params: {
   customer: {
     name: string;
-    phone: string;
-    address: string;
+    phone?: string;
+    address?: string;
   };
   items: CartLine[];
   total: number;
-}) => {
+}, config: ShopConfig = shopConfig) => {
   const { customer, items, total } = params;
-  const lines = [
-    `Hola, soy ${customer.name}. Quiero hacer este pedido:`,
-    "",
-    ...items.map((item, index) => {
+  const itemsText = items
+    .map((item, index) => {
       const selectionText = buildSelectionLabel(item.selectedOptions);
       return `${index + 1}. ${item.name}${selectionText ? ` (${selectionText})` : ""} x${item.quantity} - ${formatPrice(item.price * item.quantity)}`;
-    }),
-    "",
-    `Total: ${formatPrice(total)}`,
-    `Nombre: ${customer.name}`,
-    `Teléfono: ${customer.phone}`,
-    `Dirección: ${customer.address}`,
-    "",
-    `Tienda: ${shopConfig.storeName}`,
-  ];
+    })
+    .join("\n");
 
-  return lines.join("\n");
+  const template = config.whatsappMessageTemplate || [
+    "Hola, soy {name}. Quiero hacer este pedido:",
+    "",
+    "{items}",
+    "",
+    "Total: {total}",
+    "Tienda: {storeName}",
+  ].join("\n");
+
+  return [
+    ["{name}", customer.name],
+    ["{phone}", customer.phone ?? ""],
+    ["{address}", customer.address ?? ""],
+    ["{items}", itemsText],
+    ["{total}", formatPrice(total)],
+    ["{storeName}", config.storeName],
+  ].reduce(
+    (currentMessage, [token, value]) => currentMessage.replaceAll(token, value),
+    template,
+  );
 };
 
-export const buildWhatsAppUrl = (message: string) => {
-  const phone = shopConfig.whatsappNumber.replace(/\D/g, "");
+export const buildWhatsAppUrl = (message: string, config: ShopConfig = shopConfig) => {
+  const phone = config.whatsappNumber.replace(/\D/g, "");
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 };

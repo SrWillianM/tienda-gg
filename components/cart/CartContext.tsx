@@ -49,12 +49,8 @@ const readCart = (): CartLine[] => {
 };
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartLine[]>([]);
+  const [items, setItems] = useState<CartLine[]>(readCart);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  useEffect(() => {
-    setItems(readCart());
-  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") {

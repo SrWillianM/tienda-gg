@@ -6,10 +6,12 @@ import { useCart } from "@/components/cart/CartContext";
 import { CartItem } from "@/components/cart/CartItem";
 import { Button, buttonClassName } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { formatPrice, shopConfig } from "@/lib/shop";
+import { formatPrice } from "@/lib/shop";
+import { useShopData } from "@/components/admin/ShopDataProvider";
 
 export default function CartPage() {
   const { items, subtotal, totalItems, clearCart } = useCart();
+  const { shopConfig } = useShopData();
 
   return (
     <div className="container-shell py-16">

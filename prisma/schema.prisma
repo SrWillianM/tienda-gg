@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ===================================================================
+// DATABASE CONFIGURATION FOR EASY MIGRATION
+// ===================================================================
+// LOCAL (default, works great): sqlite
+//   Set in .env: DATABASE_URL="file:./prisma/dev.db"
+// CLOUD / PRODUCTION (recommended for internet): postgresql
+//   Set in .env: DATABASE_URL="postgresql://user:pass@host:5432/db?schema=public"
+//   Then run: npx prisma db push
+//
+// After changing provider, run:
+//   npx prisma generate
+//   npx prisma db push
+// ===================================================================
+
+datasource db {
+  provider = "sqlite"
+  // For PostgreSQL / cloud, change to "postgresql" and use DATABASE_URL env
+  // provider = "postgresql"
+}
+
+model ShopData {
+  id        Int      @id @default(1)
+  config    Json
+  updatedAt DateTime @updatedAt
+}
+
+// Flexible Product model - variants and highlights are JSON for maximum flexibility
+// (different product types need different options: color+size, days access, specs, etc.)
+model Product {
+  id               String   @id
+  slug             String   @unique
+  name             String
+  price            Int
+  compareAtPrice   Int?
+  category         String
+  shortDescription String
+  description      String
+  // images: array of PUBLIC PATHS like "/uploads/products/abc123.jpg" or external URLs
+  // NEVER store base64/data: URLs here anymore
+  images           Json
+  variants         Json     // [{label:"Color", options:["Rojo","Azul"]}, ...]
+  featured         Boolean  @default(false)
+  offer            Boolean  @default(false)
+  badge            String?
+  rating           Float?
+  reviews          Int?
+  highlights       Json     // string[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([category])
+}
+
+// Users with roles (ceo, admin, user). Passwords stored for demo simplicity.
+// For real production: hash passwords + add proper auth.
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  password     String   // TODO: in prod use bcrypt hash
+  role         String   // "admin" | "ceo" | "user"
+  displayName  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Carts persisted in DB (replaces data/carts.json - works in cloud + local)
+model Cart {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  items     Json     // CartLine[]
+  updatedAt DateTime @default(now()) @updatedAt
+}

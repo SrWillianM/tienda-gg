@@ -8,7 +8,7 @@ import { Select } from "@/components/ui/Select";
 import { useCart } from "@/components/cart/CartContext";
 import { buildSelectionLabel, formatPrice, type CartSelection, type Product } from "@/lib/shop";
 import { cn } from "@/lib/cn";
-import { Plus, Star } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -66,10 +66,6 @@ export function ProductCard({ product, className }: ProductCardProps) {
             <h3 className="mt-2 text-xl font-bold leading-tight text-foreground">
               {product.name}
             </h3>
-          </div>
-          <div className="flex items-center gap-1 rounded-full bg-surface px-3 py-1 text-sm font-semibold text-foreground">
-            <Star className="h-4 w-4 fill-accent text-accent" />
-            {product.rating?.toFixed(1) ?? "4.8"}
           </div>
         </div>
 

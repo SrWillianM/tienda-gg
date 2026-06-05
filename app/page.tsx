@@ -1,41 +1,46 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, HeartHandshake, ShieldCheck, Sparkles, Truck } from "lucide-react";
-import { featuredProducts, offerProducts, shopConfig, storeCategories } from "@/lib/shop";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Badge } from "@/components/ui/Badge";
 import { buttonClassName } from "@/components/ui/Button";
+import { useShopData } from "@/components/admin/ShopDataProvider";
 
 const benefits = [
   {
     icon: Truck,
-    title: "Entrega ágil",
-    description: "Experiencia optimizada para vender con logística clara y rápida respuesta en WhatsApp.",
+    title: "Operación centralizada",
+    description: "Catálogo, textos e imágenes listos para actualizar desde un solo panel.",
   },
   {
     icon: ShieldCheck,
-    title: "Plantilla confiable",
-    description: "Código modular, limpio y listo para escalar sin tocar la base técnica.",
+    title: "Datos compartidos",
+    description: "Los cambios guardados se reflejan para todos los visitantes de la web.",
   },
   {
     icon: HeartHandshake,
-    title: "Venta asistida",
-    description: "Checkout directo a WhatsApp para cerrar más pedidos sin fricción.",
+    title: "Pedido simple",
+    description: "El flujo de compra pide lo mínimo y deriva el pedido a WhatsApp.",
   },
   {
     icon: Sparkles,
-    title: "Look premium",
-    description: "Espaciado generoso, tarjetas modernas y micro-interacciones suaves.",
+    title: "Imagen de marca",
+    description: "Una presentación clara para operar como sitio oficial de la empresa.",
   },
 ];
 
 const stats = [
-  { value: "+3x", label: "más claro para el cliente" },
-  { value: "100%", label: "responsive" },
-  { value: "1 click", label: "para pedir por WhatsApp" },
+  { value: "GGcuentaspy", label: "web oficial de la empresa" },
+  { value: "Pedidos", label: "listos en un paso" },
+  { value: "Panel", label: "editable por admin" },
 ];
 
 export default function HomePage() {
+  const { shopConfig, products, categories } = useShopData();
+  const featuredProducts = products.filter((product) => product.featured).slice(0, 4);
+  const offerProducts = products.filter((product) => product.offer);
   const specialOffer = offerProducts[0] ?? featuredProducts[0];
 
   return (
@@ -46,20 +51,19 @@ export default function HomePage() {
           <div className="flex flex-col justify-center">
             <Badge className="w-fit">{shopConfig.tagline}</Badge>
             <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-              Tu tienda online lista para vender por WhatsApp con estética premium.
+              GGcuentaspy, catálogo oficial para pedidos rápidos y claros
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-              Diseñada para emprendedores de Paraguay y Latam que quieren una plantilla moderna,
-              editable y enfocada en convertir visitantes en pedidos.
+              Una web preparada para mostrar productos, recibir pedidos y mantener la información actualizada desde un panel central.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link href="/products" className={buttonClassName("primary", "lg") }>
-                Ver productos
+                Ver catálogo
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/products?category=Oferta" className={buttonClassName("outline", "lg") }>
-                Ver ofertas
+              <Link href="/checkout" className={buttonClassName("outline", "lg") }>
+                Ir al pedido
               </Link>
             </div>
 
@@ -81,7 +85,7 @@ export default function HomePage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">Colección destacada</p>
-                    <h2 className="mt-2 text-2xl font-bold text-foreground">Selección premium 2026</h2>
+                    <h2 className="mt-2 text-2xl font-bold text-foreground">Producto Destacado</h2>
                   </div>
                   <Badge className="border-emerald-200 bg-emerald-50 text-emerald-700">Top venta</Badge>
                 </div>
@@ -115,7 +119,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">Categorías destacadas</p>
-            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">Compra por colección</h2>
+            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">Explora el catálogo por línea de producto</h2>
           </div>
           <Link href="/products" className="hidden text-sm font-semibold text-accent transition hover:text-accentHover lg:inline-flex">
             Explorar catálogo
@@ -123,7 +127,7 @@ export default function HomePage() {
         </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {storeCategories.map((category) => (
+          {categories.map((category) => (
             <Link
               key={category}
               href={`/products?category=${encodeURIComponent(category)}`}
@@ -131,9 +135,8 @@ export default function HomePage() {
             >
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted">Colección</p>
               <h3 className="mt-3 text-2xl font-bold text-foreground">{category}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">Productos pensados para vender mejor con un catálogo limpio y ordenado.</p>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent transition group-hover:text-accentHover">
-                Ver categoría <ArrowRight className="h-4 w-4" />
+                Abrir categoría <ArrowRight className="h-4 w-4" />
               </span>
             </Link>
           ))}
@@ -144,7 +147,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">Productos destacados</p>
-            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">Lista para convertir</h2>
+            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">Selección vigente</h2>
           </div>
           <Link href="/products" className="text-sm font-semibold text-accent transition hover:text-accentHover">
             Ver todo
@@ -165,18 +168,18 @@ export default function HomePage() {
               <div className="flex flex-col justify-center">
                 <Badge className="border-white/20 bg-white/10 text-white">Oferta especial</Badge>
                 <h2 className="mt-5 max-w-lg text-3xl font-bold leading-tight sm:text-4xl">
-                  Dale protagonismo a tus productos estrella con una promoción visualmente potente.
+                  Producto destacado de la semana
                 </h2>
                 <p className="mt-4 max-w-xl text-base leading-7 text-white/70">
-                  Este bloque está pensado para resaltar promociones, bundles o lanzamientos con estilo premium.
+                  Resalta aquí el artículo que quieras poner primero en la web oficial y en los pedidos.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link href="/products" className={buttonClassName("primary", "lg") }>
-                    Ver oferta
+                    Ver producto
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link href="/checkout" className={buttonClassName("outline", "lg", "border-white/20 bg-white text-header hover:bg-white/90") }>
-                    Ir al checkout
+                    Ir al pedido
                   </Link>
                 </div>
               </div>
@@ -214,28 +217,7 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      <section className="container-shell pb-24">
-        <div>
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">Por qué elegir esta tienda</p>
-          <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">Beneficios que venden</h2>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {benefits.map((benefit) => {
-            const Icon = benefit.icon;
-
-            return (
-              <div key={benefit.title} className="rounded-[2rem] border border-border bg-white p-6 shadow-soft">
-                <div className="inline-flex rounded-2xl bg-accent/10 p-3 text-accent">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-foreground">{benefit.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{benefit.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      
     </div>
   );
 }

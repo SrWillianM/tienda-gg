@@ -1,10 +1,32 @@
 {
-  "storeName": "Tienda WhatsApp Pro",
-  "tagline": "Plantilla premium de e-commerce para vender más por WhatsApp",
-  "description": "Una tienda online moderna, rápida y fácil de editar para emprendedores de Paraguay y Latam.",
+  "storeName": "GGcuentaspy",
+  "tagline": "Catálogo oficial y pedidos centralizados",
+  "description": "Sitio oficial de GGcuentaspy para publicar productos, actualizar contenido y recibir pedidos de forma ordenada.",
   "whatsappNumber": "595981234567",
   "supportPhone": "+595 981 234 567",
   "logo": "/images/logo.svg",
+  "whatsappMessageTemplate": "Hola, soy {name}. Quiero hacer este pedido:\n\n{items}\n\nTotal: {total}\n\nTienda: {storeName}",
+  "categories": ["Tecnología", "Hogar", "Belleza", "Accesorios", "Fitness"],
+  "authUsers": [
+    {
+      "username": "user@demo.com",
+      "password": "User123!",
+      "role": "user",
+      "displayName": "Cliente Demo"
+    },
+    {
+      "username": "ceo@demo.com",
+      "password": "Ceo123!",
+      "role": "ceo",
+      "displayName": "CEO Demo"
+    },
+    {
+      "username": "admin@demo.com",
+      "password": "Admin123!",
+      "role": "admin",
+      "displayName": "Admin Demo"
+    }
+  ],
   "currency": "PYG",
   "accent": "#22C55E",
   "accentHover": "#16A34A",
@@ -14,6 +36,6 @@
   "mutedText": "#64748B",
   "deepHeader": "#111111",
   "border": "#E2E8F0",
-  "ctaText": "Pedir por WhatsApp",
-  "shippingNote": "Entrega rápida en Asunción y envíos a todo el país"
+  "ctaText": "Enviar pedido",
+  "shippingNote": "Pedidos y soporte en horario comercial"
 }

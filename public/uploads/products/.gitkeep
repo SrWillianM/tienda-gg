@@ -1,0 +1,4 @@
+# This file keeps the uploads/products folder in git.
+# Uploaded images are gitignored. For production internet hosting:
+# - Use Vercel + external storage (Cloudinary, Uploadthing, S3)
+# - Or self-host on VPS with persistent volume (Coolify, Railway, Dokku)

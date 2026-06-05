@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, ShoppingBag } from "lucide-react";
-import { shopConfig, storeCategories } from "@/lib/shop";
+import { useShopData } from "@/components/admin/ShopDataProvider";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 const footerLinks = [
   { href: "/", label: "Inicio" },
@@ -10,6 +11,9 @@ const footerLinks = [
 ];
 
 export function Footer() {
+  const { shopConfig, categories } = useShopData();
+  const { session } = useAuth();
+
   return (
     <footer className="border-t border-border bg-header text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
@@ -29,6 +33,11 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
+            {session?.role === "ceo" || session?.role === "admin" ? (
+              <Link href="/admin" className="transition hover:text-white">
+                Panel
+              </Link>
+            ) : null}
           </div>
         </div>
 
@@ -43,7 +52,7 @@ export function Footer() {
               <MapPin className="h-4 w-4 text-accent" />
               Paraguay y Latam
             </div>
-            <p className="text-white/60">Categorías: {storeCategories.join(" · ")}</p>
+            <p className="text-white/60">Categorías: {categories.join(" · ")}</p>
           </div>
         </div>
       </div>

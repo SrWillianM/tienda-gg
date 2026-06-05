@@ -1,0 +1,19 @@
+{
+  "admin@demo.com": [
+    {
+      "lineId": "smartwatch-urban-pro-tamaño-41-mm-color-grafito",
+      "productId": "smartwatch-urban-pro",
+      "name": "Smartwatch Urban Pro",
+      "price": 349000,
+      "image": "/images/product-2.svg",
+      "category": "Tecnología",
+      "quantity": 1,
+      "selectedOptions": {
+        "Tamaño": "41 mm",
+        "Color": "Grafito"
+      },
+      "badge": "Nuevo"
+    }
+  ],
+  "user@demo.com": []
+}

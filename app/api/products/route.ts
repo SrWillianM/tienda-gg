@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { products } from "@/lib/shop";
+import { readShopData } from "@/lib/shop-data.server";
 
-export function GET() {
+export async function GET() {
+  const { products } = await readShopData();
   return NextResponse.json({ products, count: products.length });
 }

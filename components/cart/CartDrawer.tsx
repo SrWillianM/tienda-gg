@@ -5,11 +5,13 @@ import { ArrowRight, X } from "lucide-react";
 import { CartItem } from "@/components/cart/CartItem";
 import { useCart } from "@/components/cart/CartContext";
 import { buttonClassName } from "@/components/ui/Button";
-import { formatPrice, shopConfig } from "@/lib/shop";
+import { formatPrice } from "@/lib/shop";
 import { cn } from "@/lib/cn";
+import { useShopData } from "@/components/admin/ShopDataProvider";
 
 export function CartDrawer() {
   const { items, isDrawerOpen, closeDrawer, subtotal, totalItems, clearCart } = useCart();
+  const { shopConfig } = useShopData();
 
   return (
     <>

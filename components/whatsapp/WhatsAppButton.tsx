@@ -1,12 +1,15 @@
 "use client";
 
 import { MessageCircleMore } from "lucide-react";
-import { buildWhatsAppUrl, shopConfig } from "@/lib/shop";
+import { buildWhatsAppUrl } from "@/lib/shop";
+import { useShopData } from "@/components/admin/ShopDataProvider";
 
 export function WhatsAppButton() {
+  const { shopConfig } = useShopData();
+
   const handleClick = () => {
     const message = `Hola, quiero más información sobre ${shopConfig.storeName}.`;
-    window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    window.open(buildWhatsAppUrl(message, shopConfig), "_blank", "noopener,noreferrer");
   };
 
   return (
